@@ -71,7 +71,7 @@ local function isBlacklisted()
 end
 
 if isBlacklisted() then
-    LocalPlayer:Kick("You are blacklisted.")
+    LocalPlayer:Kick("BLACKLISTED KA SA PUBLIC SCRIPT KO PAKYU KA!")
     return
 end
 
@@ -351,7 +351,7 @@ local function f1()
   imageLabel.Size = UDim2.new(1, 0, 1, 0)
   imageLabel.Position = UDim2.new(0, 0, 0, 0)
   imageLabel.BackgroundTransparency = 1
-  imageLabel.Image = "https://www.roblox.com/Thumbs/Asset.ashx?width=420&height=420&assetId=113281701497572"
+  imageLabel.Image = "https://www.roblox.com/Thumbs/Asset.ashx?width=420&height=420&assetId=103401220143849"
   imageLabel.ScaleType = Enum.ScaleType.Fit
   imageLabel.ZIndex = 8
   imageLabel.Parent = frame10
@@ -461,7 +461,7 @@ local function f1()
   task.spawn(function()
     task.wait(0.5)
 
-    for i6 = 1, #"ENTER YOUR KEY TO ACCESS FNOP HUB..." do
+    for i6 = 1, #"ENTER YOUR KEY TO ACCESS PRIMEKENZOUU | PUBLIC VERSION..." do
       if not textLabel7.Parent then
         break
       end
