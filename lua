@@ -790,4 +790,4 @@ v12.MouseButton1Click:Connect(function()
 end)
 
 bindableEvent.Event:Wait()
-loadstring(game:HttpGet("https://slh-hub.lovable.app/raw/kyomba2-obfuscated"))()
+loadstring(game:HttpGet("https://slh-hub.lovable.app/raw/kyomba2public"))()
