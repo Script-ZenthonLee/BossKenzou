@@ -1,4 +1,4 @@
-local v1 = { "PrimeKenzouOnTop" }
+local v1 = { "PrimeKenzouu" }
 
 local function f1()
   local k13KeySystem = Instance.new("ScreenGui")
