@@ -1,6 +1,6 @@
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
-local blacklistURL = "https://slh-hub.lovable.app/raw/blacklist-lua"
+local blacklistURL = "https://slh-hub.lovable.app/raw/blacklist-players"
 local blacklist = {}
 
 local function isPlayerValid()
