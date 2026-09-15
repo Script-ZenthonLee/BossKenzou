@@ -71,7 +71,7 @@ local function isBlacklisted()
 end
 
 if isBlacklisted() then
-    LocalPlayer:Kick("BLACKLISTED KA SA PUBLIC SCRIPT KO PAKYU KA!")
+    LocalPlayer:Kick("BLACKLISTED KA SA PUBLIC SCRIPT KO BOBO KA!")
     return
 end
 
