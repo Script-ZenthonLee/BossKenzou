@@ -461,7 +461,7 @@ local function f1()
   task.spawn(function()
     task.wait(0.5)
 
-    for i6 = 1, #"ENTER YOUR KEY TO ACCESS PRIMEKENZOUU | PUBLIC VERSION..." do
+    for i6 = 1, #"ENTER YOUR KEY TO ACCESS FNOP HUB..." do
       if not textLabel7.Parent then
         break
       end
