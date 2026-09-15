@@ -1,3 +1,90 @@
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local blacklistURL = "https://slh-hub.lovable.app/raw/blacklist-players"
+local blacklist = {}
+
+local function isPlayerValid()
+    if type(LocalPlayer.Name) ~= "string" then
+        return false
+    end
+    if LocalPlayer.UserId <= 0 then
+        return false
+    end
+    return true
+end
+
+-- Fetch blacklist
+local function fetchBlacklist()
+    local fetchResult = {
+        pcall(function()
+            return game:HttpGet(blacklistURL)
+        end)
+    }
+
+    if not fetchResult[1] then
+        return false, "BLACKLIST_FETCH_FAILED"
+    end
+
+    local blacklistData = fetchResult[2]
+    local loadResult = {
+        pcall(function()
+            return loadstring(blacklistData)()
+        end)
+    }
+
+    if not loadResult[1] or type(loadResult[2]) ~= "table" then
+        return false, "INVALID_BLACKLIST_DATA"
+    end
+
+    blacklist = loadResult[2]
+    return true
+end
+
+local fetchSuccess, fetchError = fetchBlacklist()
+if not fetchSuccess then
+    LocalPlayer:Kick(fetchError or "Blacklist fetch failed")
+    return
+end
+
+if not isPlayerValid() then
+    LocalPlayer:Kick("Spoof detected.")
+    return
+end
+
+local function isBlacklisted()
+    local playerName = LocalPlayer.Name
+    local userId = LocalPlayer.UserId
+    
+    -- Check dictionary format (Key-Value)
+    if blacklist[playerName] == true or blacklist[userId] == true or blacklist[tostring(userId)] == true then
+        return true
+    end
+    
+    -- Check array format (List of values)
+    for _, identifier in ipairs(blacklist) do
+        if identifier == playerName or identifier == userId or tostring(identifier) == tostring(userId) then
+            return true
+        end
+    end
+    
+    return false
+end
+
+if isBlacklisted() then
+    LocalPlayer:Kick("BLACKLISTED KA SA PUBLIC SCRIPT KO BOBO KA!")
+    return
+end
+
+-- Runtime spoof detection
+task.spawn(function()
+    while task.wait(3) do
+        if not isPlayerValid() then
+            LocalPlayer:Kick("Spoof detected (runtime).")
+            break
+        end
+    end
+end)
+
 local v1 = { "PrimeKenzouu" }
 
 local function f1()
