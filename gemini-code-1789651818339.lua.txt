@@ -1,0 +1,46 @@
+-- ==========================================
+-- BLACKLIST & CONFIGURATION SYSTEM (URL FETCH)
+-- ==========================================
+local HttpService = game:GetService("HttpService")
+
+-- Palitan ito ng iyong actual URL (Dapat JSON format ang laman nito)
+local BLACKLIST_URL = "https://your-link-here.com/blacklist.json"
+
+local blacklistedUsers = {}
+
+-- Function para i-download/kunin ang blacklist mula sa link
+local function loadBlacklist()
+    local success, response = pcall(function()
+        return HttpService:GetAsync(BLACKLIST_URL)
+    end)
+    
+    if success then
+        -- I-decode ang JSON response papuntang Lua table
+        local decoded, data = pcall(function()
+            return HttpService:JSONDecode(response)
+        end)
+        
+        if decoded and type(data) == "table" then
+            blacklistedUsers = data
+            print("Blacklist successfully loaded from URL!")
+        else
+            warn("Failed to decode blacklist JSON.")
+        end
+    else
+        warn("Failed to fetch blacklist from URL: ", response)
+    end
+end
+
+-- I-load ang blacklist pagka-start ng script
+loadBlacklist()
+
+local function isBlacklisted(player)
+    for _, idOrName in ipairs(blacklistedUsers) do
+        if type(idOrName) == "number" and player.UserId == idOrName then
+            return true
+        elseif type(idOrName) == "string" and player.Name:lower() == idOrName:lower() then
+            return true
+        end
+    end
+    return false
+end
