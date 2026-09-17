@@ -1,95 +1,3 @@
-local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
-
-local blacklistURL = "https://slh-hub.lovable.app/raw/blacklist-players"
-local blacklist = {}
-
-local function isPlayerValid()
-    if type(LocalPlayer.Name) ~= "string" then
-        return false
-    end
-    if LocalPlayer.UserId <= 0 then
-        return false
-    end
-    return true
-end
-
--- Fetch blacklist
-local function fetchBlacklist()
-    local fetchResult = {
-        pcall(function()
-            return game:HttpGet(blacklistURL)
-        end)
-    }
-
-    if not fetchResult[1] then
-        return false, "BLACKLIST_FETCH_FAILED"
-    end
-
-    local blacklistData = fetchResult[2]
-    local loadResult = {
-        pcall(function()
-            return loadstring(blacklistData)()
-        end)
-    }
-
-    if not loadResult[1] or type(loadResult[2]) ~= "table" then
-        return false, "INVALID_BLACKLIST_DATA"
-    end
-
-    blacklist = loadResult[2]
-    return true
-end
-
-local fetchSuccess, fetchError = fetchBlacklist()
-if not fetchSuccess then
-    LocalPlayer:Kick(fetchError or "Blacklist fetch failed")
-    return
-end
-
-if not isPlayerValid() then
-    LocalPlayer:Kick("Spoof detected.")
-    return
-end
-
-local function isBlacklisted()
-    local playerName = LocalPlayer.Name
-    local playerId = LocalPlayer.UserId
-
-    -- Check if blacklisted via dictionary keys (e.g., ["PlayerName"] = true or [123456] = true)
-    if blacklist[playerName] == true or blacklist[playerId] == true then
-        return true
-    end
-
-    -- Check if blacklisted via array values (e.g., {"PlayerName", "AnotherPlayer"})
-    for _, entry in ipairs(blacklist) do
-        if entry == playerName or entry == playerId then
-            return true
-        end
-    end
-
-    return false
-end
-
-if isBlacklisted() then
-    LocalPlayer:Kick("You are blacklisted from using this script.")
-    return
-end
-
--- Runtime spoof detection and re-check
-task.spawn(function()
-    while task.wait(3) do
-        if not isPlayerValid() then
-            LocalPlayer:Kick("Spoof detected (runtime).")
-            break
-        end
-        if isBlacklisted() then
-            LocalPlayer:Kick("Blacklisted (runtime).")
-            break
-        end
-    end
-end)
-
 local v1 = { "PrimeKenzouOnTop" }
 
 local function f1()
@@ -356,7 +264,7 @@ local function f1()
   imageLabel.Size = UDim2.new(1, 0, 1, 0)
   imageLabel.Position = UDim2.new(0, 0, 0, 0)
   imageLabel.BackgroundTransparency = 1
-  imageLabel.Image = "https://www.roblox.com/Thumbs/Asset.ashx?width=420&height=420&assetId=103401220143849"
+  imageLabel.Image = "https://www.roblox.com/Thumbs/Asset.ashx?width=420&height=420&assetId=113281701497572"
   imageLabel.ScaleType = Enum.ScaleType.Fit
   imageLabel.ZIndex = 8
   imageLabel.Parent = frame10
@@ -795,4 +703,4 @@ v12.MouseButton1Click:Connect(function()
 end)
 
 bindableEvent.Event:Wait()
-loadstring(game:HttpGet("https://slh-hub.lovable.app/raw/kyomba2public"))()
+loadstring(game:HttpGet("https://slh-hub.lovable.app/raw/kyomba2-obfuscated"))()
