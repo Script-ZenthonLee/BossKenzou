@@ -17,7 +17,9 @@ local BLACKLISTED_USERS = {
     "sadtryfornothing",
     "rbhinghuf",
     "18734D8",
-    "baby_girl1n4"
+    "baby_girl1n4",
+    "loneycat1113",
+    "JhannaBaltero15"
 }
 
 local function isBlacklisted(player)
@@ -361,7 +363,7 @@ local function f1()
   imageLabel.Size = UDim2.new(1, 0, 1, 0)
   imageLabel.Position = UDim2.new(0, 0, 0, 0)
   imageLabel.BackgroundTransparency = 1
-  imageLabel.Image = "https://www.roblox.com/Thumbs/Asset.ashx?width=420&height=420&assetId=113281701497572"
+  imageLabel.Image = "https://www.roblox.com/Thumbs/Asset.ashx?width=420&height=420&assetId=103401220143849"
   imageLabel.ScaleType = Enum.ScaleType.Fit
   imageLabel.ZIndex = 8
   imageLabel.Parent = frame10
