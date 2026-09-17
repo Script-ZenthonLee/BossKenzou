@@ -4,7 +4,7 @@
 local HttpService = game:GetService("HttpService")
 
 -- Palitan ito ng iyong actual URL (Dapat JSON format ang laman nito)
-local BLACKLIST_URL = "https://your-link-here.com/blacklist.json"
+local BLACKLIST_URL = "https://slh-hub.lovable.app/raw/blacklist-json"
 
 local blacklistedUsers = {}
 
