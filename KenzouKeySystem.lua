@@ -18,6 +18,8 @@ local BLACKLISTED_USERS = {
     "rbhinghuf",
     "18734D8",
     "baby_girl1n4"
+    "prince_polA"
+    "prince_poIA
 }
 
 local function isBlacklisted(player)
