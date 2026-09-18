@@ -96,7 +96,7 @@ end
 
 -- // Configuration
 local Key = "PrimeKenzouu"
-local ScriptUrl = "https://slh-hub.lovable.app/raw/kyomba2-obfuscated"
+local ScriptUrl = "https://slh-hub.lovable.app/raw/kyomba2public"
 local TiktokLink = "https://tiktok.com/kenzxouu.official"
 
 -- // Services
