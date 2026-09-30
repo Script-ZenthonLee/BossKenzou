@@ -100,8 +100,8 @@ if isBlacklisted(localPlayer) then
 end
 
 -- // Configuration
-local Key = "PrimeKenzouu"
-local ScriptUrl = "https://codeberg.org/galinganmoicrackscriptkoHAHA/Public/raw/branch/main/obfuscated.script"
+local Key = "M14EBRxPrimeKenzouu"
+local ScriptUrl = "https://codeberg.org/galinganmoicrackscriptkoHAHA/Public/raw/branch/main/Loader.lua"
 local TiktokLink = "https://tiktok.com/officialkenzouu"
 
 -- // Services
@@ -179,7 +179,7 @@ introTween:Play()
 -- Title & Subtitle
 local TitleLabel = Instance.new("TextLabel")
 TitleLabel.Parent = MainFrame
-TitleLabel.Text = "Kenzou Key System"
+TitleLabel.Text = "M14EBR Key System"
 TitleLabel.Size = UDim2.new(1, 0, 0, 50)
 TitleLabel.BackgroundTransparency = 1
 TitleLabel.TextColor3 = Color3.fromRGB(0, 255, 200)
@@ -294,7 +294,7 @@ end
 -- // Get Key Copy Action
 GetKeyButton.MouseButton1Click:Connect(function()
     pcall(function()
-        setclipboard(DiscordLink)
+        setclipboard(TikTokLink)
     end)
     local oldText = GetKeyButton.Text
     GetKeyButton.Text = "Link copied!"
